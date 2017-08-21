@@ -21,6 +21,7 @@ public class JFr_FinancialHistory {
 	private JPanel contentPane = new JPanel();
 	private JTable table;
 	private JButton btnNewButton;
+	private JButton btnNewButton1;
 
 	public JFr_FinancialHistory(String user) throws IOException, SQLException {
 
@@ -67,8 +68,14 @@ public class JFr_FinancialHistory {
 		contentPane.add(table);
 
 		btnNewButton = new JButton("Back");
-		btnNewButton.setBounds(312, 167, 89, 23);
+		btnNewButton.setBounds(312, 210, 89, 23);
 		contentPane.add(btnNewButton);
+		contentPane.setVisible(true);
+		frame.setVisible(true);
+		
+		btnNewButton1 = new JButton("Chart");
+		btnNewButton1.setBounds(312, 167, 89, 23);
+		contentPane.add(btnNewButton1);
 		contentPane.setVisible(true);
 		frame.setVisible(true);
 
@@ -82,6 +89,18 @@ public class JFr_FinancialHistory {
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
+			}
+		});
+		
+		btnNewButton1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					try {
+						JDisplayCharts.blol(user);
+					} catch (IOException | SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					frame.dispose();
 			}
 		});
 	}
